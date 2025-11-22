@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayla Case - Case HP Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'purple-custom': '#8B5CF6',
+                        'purple-dark': '#6D28D9',
+                        'purple-light': '#A78BFA'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .floating-moon {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-moon:nth-child(2) {
+            animation-delay: -2s;
+        }
+        
+        .floating-moon:nth-child(3) {
+            animation-delay: -4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1s ease-out;
+        }
+        
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .case-frame {
+            border: 3px solid #8B5CF6;
+            border-radius: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(0, 0, 0, 0.1));
+            transition: all 0.3s ease;
+        }
+        
+        .case-frame:hover {
+            border-color: #A78BFA;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+        }
+        
+        .photo-frame {
+            border: 4px solid #8B5CF6;
+            border-radius: 20px;
+            padding: 10px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(0, 0, 0, 0.2));
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-sans overflow-x-hidden">
+    <!-- Floating Moon Background -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <svg class="floating-moon absolute top-20 left-10 w-16 h-16 opacity-30" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="#8B5CF6"/>
+            <circle cx="35" cy="35" r="8" fill="#6D28D9"/>
+            <circle cx="60" cy="25" r="5" fill="#6D28D9"/>
+            <circle cx="45" cy="60" r="6" fill="#6D28D9"/>
+        </svg>
+        
+        <svg class="floating-moon absolute top-40 right-20 w-20 h-20 opacity-20" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="#A78BFA"/>
+            <circle cx="30" cy="40" r="6" fill="#8B5CF6"/>
+            <circle cx="65" cy="30" r="4" fill="#8B5CF6"/>
+            <circle cx="40" cy="65" r="7" fill="#8B5CF6"/>
+        </svg>
+        
+        <svg class="floating-moon absolute bottom-32 left-1/4 w-12 h-12 opacity-25" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="#8B5CF6"/>
+            <circle cx="40" cy="30" r="5" fill="#6D28D9"/>
+            <circle cx="60" cy="45" r="6" fill="#6D28D9"/>
+            <circle cx="35" cy="65" r="4" fill="#6D28D9"/>
+        </svg>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-purple-custom/30">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-purple-custom">Kayla Case</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" onclick="showPage('home')" class="nav-link text-white hover:text-purple-light transition-colors">Beranda</a>
+                    <a href="#" onclick="showPage('products')" class="nav-link text-white hover:text-purple-light transition-colors">Produk</a>
+                    <a href="#" onclick="showPage('order')" class="nav-link text-white hover:text-purple-light transition-colors">Pemesanan</a>
+                    <a href="#" onclick="showPage('contact')" class="nav-link text-white hover:text-purple-light transition-colors">Kontak</a>
+                    <a href="#" onclick="showPage('membership')" class="nav-link text-white hover:text-purple-light transition-colors">Member</a>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#" onclick="showPage('home')" class="block text-white hover:text-purple-light transition-colors">Beranda</a>
+                <a href="#" onclick="showPage('products')" class="block text-white hover:text-purple-light transition-colors">Produk</a>
+                <a href="#" onclick="showPage('order')" class="block text-white hover:text-purple-light transition-colors">Pemesanan</a>
+                <a href="#" onclick="showPage('contact')" class="block text-white hover:text-purple-light transition-colors">Kontak</a>
+                <a href="#" onclick="showPage('membership')" class="block text-white hover:text-purple-light transition-colors">Member</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page-content">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute inset-0 pointer-events-none">
+                <!-- Gradient Orbs -->
+                <div class="absolute top-1/4 left-10 w-32 h-32 bg-purple-custom/20 rounded-full blur-xl animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-10 w-40 h-40 bg-purple-light/15 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-custom/5 rounded-full blur-3xl"></div>
+                
+                <!-- Floating Phone Icons -->
+                <div class="absolute top-20 right-20 opacity-10 animate-bounce" style="animation-duration: 3s;">
+                    <svg class="w-16 h-16 text-purple-custom" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM7 4h10v14H7V4z"/>
+                    </svg>
+                </div>
+                <div class="absolute bottom-32 left-16 opacity-10 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
+                    <svg class="w-12 h-12 text-purple-light" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM7 4h10v14H7V4z"/>
+                    </svg>
+                </div>
+                
+                <!-- Geometric Shapes -->
+                <div class="absolute top-32 left-1/4 w-4 h-4 bg-purple-custom rotate-45 animate-spin" style="animation-duration: 8s;"></div>
+                <div class="absolute bottom-40 right-1/4 w-6 h-6 border-2 border-purple-light rounded-full animate-ping"></div>
+            </div>
+
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="fade-in">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center px-4 py-2 bg-purple-custom/20 border border-purple-custom/30 rounded-full mb-6">
+                        <span class="w-2 h-2 bg-purple-custom rounded-full mr-2 animate-pulse"></span>
+                        <span class="text-purple-light text-sm font-medium">✨ Premium Quality Cases</span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-custom via-purple-light to-purple-custom bg-clip-text text-transparent">
+                        Kayla Case
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-4 text-gray-300 max-w-2xl mx-auto">
+                        Case HP Premium dengan Desain Eksklusif
+                    </p>
+                    <p class="text-lg text-gray-400 mb-8 max-w-xl mx-auto">
+                        Lindungi smartphone Anda dengan style yang tak tertandingi. Kualitas premium, harga terjangkau! 📱✨
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="flex justify-center space-x-8 mb-8 text-sm">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-purple-custom">1000+</div>
+                            <div class="text-gray-400">Happy Customers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-purple-custom">50+</div>
+                            <div class="text-gray-400">Design Variants</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-purple-custom">24/7</div>
+                            <div class="text-gray-400">Support</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-x-4">
+                        <button onclick="showPage('products')" class="bg-purple-custom hover:bg-purple-dark px-8 py-4 rounded-full text-white font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-purple-custom/25">
+                            🛍️ Lihat Produk
+                        </button>
+                        <button onclick="showPage('order')" class="border-2 border-purple-custom hover:bg-purple-custom px-8 py-4 rounded-full text-white font-semibold transition-all hover:shadow-lg">
+                            🚀 Pesan Sekarang
+                        </button>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="flex justify-center items-center space-x-6 mt-12 text-gray-400 text-sm">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Garansi Kualitas
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 text-blue-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                            </svg>
+                            Pengiriman Cepat
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 text-purple-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                            </svg>
+                            Support 24/7
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-20 relative">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-16 text-purple-custom">Mengapa Pilih Kayla Case?</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="slide-in-left text-center p-6 rounded-lg bg-gray-900/50 border border-purple-custom/30 hover:border-purple-light/50 transition-all hover:transform hover:scale-105">
+                        <div class="w-16 h-16 bg-purple-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Kualitas Premium</h3>
+                        <p class="text-gray-400">Material berkualitas tinggi yang tahan lama dan melindungi HP Anda dengan sempurna.</p>
+                        <div class="mt-4 text-purple-light text-sm">⭐⭐⭐⭐⭐ 4.9/5</div>
+                    </div>
+                    <div class="bounce-in text-center p-6 rounded-lg bg-gray-900/50 border border-purple-custom/30 hover:border-purple-light/50 transition-all hover:transform hover:scale-105">
+                        <div class="w-16 h-16 bg-purple-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Desain Eksklusif</h3>
+                        <p class="text-gray-400">Desain unik dan menarik yang membuat HP Anda tampil beda dari yang lain.</p>
+                        <div class="mt-4 text-purple-light text-sm">🎨 50+ Desain Unik</div>
+                    </div>
+                    <div class="slide-in-right text-center p-6 rounded-lg bg-gray-900/50 border border-purple-custom/30 hover:border-purple-light/50 transition-all hover:transform hover:scale-105">
+                        <div class="w-16 h-16 bg-purple-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Harga Terjangkau</h3>
+                        <p class="text-gray-400">Kualitas premium dengan harga yang ramah di kantong untuk semua kalangan.</p>
+                        <div class="mt-4 text-purple-light text-sm">💰 Mulai dari 65K</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-20 bg-gray-900/30 relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-6 text-purple-custom">Apa Kata Mereka?</h2>
+                    <p class="text-xl text-gray-300">Testimoni dari pelanggan yang puas dengan produk kami</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-purple-custom/20 slide-in-left">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-custom rounded-full flex items-center justify-center text-white font-bold">A</div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold text-purple-light">Ahmad Farel</h4>
+                                <div class="text-yellow-400 text-sm">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic">"Case nya bagus banget! Kualitas premium tapi harganya masih terjangkau. Desainnya juga unik, HP jadi keliatan keren, ownernya juga cantik banget!"</p>
+                    </div>
+                    
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-purple-custom/20 bounce-in">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-custom rounded-full flex items-center justify-center text-white font-bold">S</div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold text-purple-light">Nurul Inayah</h4>
+                                <div class="text-yellow-400 text-sm">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic">"Pelayanannya ramah dan cepat! Case gaming pro nya cocok banget buat main game. Recommended deh!"</p>
+                    </div>
+                    
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-purple-custom/20 slide-in-right">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-custom rounded-full flex items-center justify-center text-white font-bold">R</div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold text-purple-light">Anggi Saputri</h4>
+                                <div class="text-yellow-400 text-sm">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic">"Custom design nya keren! Bisa request desain sendiri dan hasilnya memuaskan. Pasti order lagi!"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 relative">
+            <div class="container mx-auto px-6 text-center">
+                <div class="bg-gradient-to-r from-purple-custom/20 to-purple-light/20 p-12 rounded-3xl border border-purple-custom/30">
+                    <h2 class="text-4xl font-bold mb-6 text-white">Siap Melindungi HP Anda?</h2>
+                    <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Jangan tunggu HP Anda rusak! Lindungi sekarang dengan case premium dari Kayla Case</p>
+                    <div class="space-x-4">
+                        <button onclick="showPage('products')" class="bg-purple-custom hover:bg-purple-dark px-8 py-4 rounded-full text-white font-semibold transition-all transform hover:scale-105">
+                            🛍️ Belanja Sekarang
+                        </button>
+                        <button onclick="showPage('contact')" class="border-2 border-purple-custom hover:bg-purple-custom px-8 py-4 rounded-full text-white font-semibold transition-all">
+                            💬 Konsultasi Gratis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Products Page -->
+    <div id="products-page" class="page-content hidden">
+        <section class="min-h-screen pt-24 pb-20 relative overflow-hidden">
+            <!-- Decorative Background -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute top-20 left-5 w-20 h-20 bg-purple-custom/10 rounded-full blur-xl"></div>
+                <div class="absolute bottom-20 right-5 w-32 h-32 bg-purple-light/10 rounded-full blur-2xl"></div>
+                <div class="absolute top-1/2 left-1/4 w-2 h-2 bg-purple-custom rounded-full animate-ping"></div>
+                <div class="absolute top-1/3 right-1/4 w-3 h-3 bg-purple-light rounded-full animate-pulse"></div>
+            </div>
+            
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16 fade-in">
+                    <!-- Category Badge -->
+                    <div class="inline-flex items-center px-4 py-2 bg-purple-custom/20 border border-purple-custom/30 rounded-full mb-6">
+                        <span class="text-purple-light text-sm font-medium">📱 Premium Collection</span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-purple-custom">Koleksi Case HP</h1>
+                    <p class="text-xl text-gray-300 mb-4">Pilih case yang sesuai dengan gaya dan kepribadian Anda</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Dari desain minimalis hingga gaming pro, temukan case yang sempurna untuk melindungi dan mempercantik smartphone Anda ✨</p>
+                    
+                    <!-- Filter Buttons -->
+                    <div class="flex justify-center space-x-4 mt-8">
+                        <button class="px-6 py-2 bg-purple-custom text-white rounded-full text-sm font-medium">Semua</button>
+                        <button class="px-6 py-2 bg-gray-800 text-gray-300 hover:bg-purple-custom hover:text-white rounded-full text-sm font-medium transition-colors">Elegant</button>
+                        <button class="px-6 py-2 bg-gray-800 text-gray-300 hover:bg-purple-custom hover:text-white rounded-full text-sm font-medium transition-colors">Gaming</button>
+                        <button class="px-6 py-2 bg-gray-800 text-gray-300 hover:bg-purple-custom hover:text-white rounded-full text-sm font-medium transition-colors">Custom</button>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Case 1 -->
+                    <div class="case-frame slide-in-left">
+                        <div class="bg-gray-800 h-64 rounded-lg mb-4 flex items-center justify-center border-2 border-dashed border-purple-custom/50">
+                            <img src="elegant.jpg" alt="Case Elegant Series" class="photo-frame w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-light">Case Elegant Series</h3>
+                        <p class="text-gray-400 mb-4">Desain minimalis dan elegan untuk tampilan profesional</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-custom">Rp 75.000</span>
+                            <button onclick="selectCase('Case Elegant Series', 75000)" class="bg-purple-custom hover:bg-purple-dark px-4 py-2 rounded-lg text-white transition-colors">
+                                Pilih
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Case 2 -->
+                    <div class="case-frame bounce-in">
+                        <div class="bg-gray-800 h-64 rounded-lg mb-4 flex items-center justify-center border-2 border-dashed border-purple-custom/50">
+                            <img src="gaming.jpg" alt="Case Gaming Pro" class="photo-frame w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-light">Case Gaming Pro</h3>
+                        <p class="text-gray-400 mb-4">Desain gaming dengan perlindungan ekstra untuk gamer</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-custom">Rp 95.000</span>
+                            <button onclick="selectCase('Case Gaming Pro', 95000)" class="bg-purple-custom hover:bg-purple-dark px-4 py-2 rounded-lg text-white transition-colors">
+                                Pilih
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Case 3 -->
+                    <div class="case-frame slide-in-right">
+                        <div class="bg-gray-800 h-64 rounded-lg mb-4 flex items-center justify-center border-2 border-dashed border-purple-custom/50">
+                            <img src="cute.jpg" alt="Case Cute Collection" class="photo-frame w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-light">Case Cute Collection</h3>
+                        <p class="text-gray-400 mb-4">Desain lucu dan menggemaskan untuk tampilan yang ceria</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-custom">Rp 65.000</span>
+                            <button onclick="selectCase('Case Cute Collection', 65000)" class="bg-purple-custom hover:bg-purple-dark px-4 py-2 rounded-lg text-white transition-colors">
+                                Pilih
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Case 4 -->
+                    <div class="case-frame slide-in-left">
+                        <div class="bg-gray-800 h-64 rounded-lg mb-4 flex items-center justify-center border-2 border-dashed border-purple-custom/50">
+                            <img src="luxury.jpg" alt="Case Premium Luxury" class="photo-frame w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-light">Case Premium Luxury</h3>
+                        <p class="text-gray-400 mb-4">Material premium dengan finishing mewah dan eksklusif</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-custom">Rp 125.000</span>
+                            <button onclick="selectCase('Case Premium Luxury', 125000)" class="bg-purple-custom hover:bg-purple-dark px-4 py-2 rounded-lg text-white transition-colors">
+                                Pilih
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Case 5 -->
+                    <div class="case-frame bounce-in">
+                        <div class="bg-gray-800 h-64 rounded-lg mb-4 flex items-center justify-center border-2 border-dashed border-purple-custom/50">
+                            <img src="sport.jpg" alt="Case Sport Active" class="photo-frame w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-light">Case Sport Active</h3>
+                        <p class="text-gray-400 mb-4">Tahan banting untuk aktivitas outdoor dan olahraga</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-custom">Rp 85.000</span>
+                            <button onclick="selectCase('Case Sport Active', 85000)" class="bg-purple-custom hover:bg-purple-dark px-4 py-2 rounded-lg text-white transition-colors">
+                                Pilih
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Case 6 -->
+                    <div class="case-frame slide-in-right">
+                        <div class="bg-gray-800 h-64 rounded-lg mb-4 flex items-center justify-center border-2 border-dashed border-purple-custom/50">
+                            <img src="custom.jpg" alt="Case Custom Design" class="photo-frame w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-light">Case Custom Design</h3>
+                        <p class="text-gray-400 mb-4">Buat desain sendiri sesuai keinginan dan kreativitas Anda</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-custom">Rp 100.000</span>
+                            <button onclick="selectCase('Case Custom Design', 100000)" class="bg-purple-custom hover:bg-purple-dark px-4 py-2 rounded-lg text-white transition-colors">
+                                Pilih
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Order Page -->
+    <div id="order-page" class="page-content hidden">
+        <section class="min-h-screen pt-24 pb-20 relative overflow-hidden">
+            <!-- Decorative Background -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute top-32 right-10 w-24 h-24 bg-purple-custom/10 rounded-full blur-xl animate-pulse"></div>
+                <div class="absolute bottom-32 left-10 w-32 h-32 bg-purple-light/10 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
+                <div class="absolute top-1/4 left-1/3 w-1 h-1 bg-purple-custom rounded-full animate-ping"></div>
+                <div class="absolute bottom-1/4 right-1/3 w-2 h-2 bg-purple-light rounded-full animate-bounce"></div>
+            </div>
+            
+            <div class="container mx-auto px-6 max-w-2xl relative z-10">
+                <div class="text-center mb-12 fade-in">
+                    <!-- Order Badge -->
+                    <div class="inline-flex items-center px-4 py-2 bg-purple-custom/20 border border-purple-custom/30 rounded-full mb-6">
+                        <span class="text-purple-light text-sm font-medium">🛒 Easy Order Process</span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-purple-custom">Pemesanan</h1>
+                    <p class="text-xl text-gray-300 mb-4">Isi form di bawah untuk memesan case HP pilihan Anda</p>
+                    <p class="text-gray-400">Proses pemesanan mudah dan cepat! Data akan tersimpan otomatis di sistem kami 📊</p>
+                    
+                    <!-- Progress Steps -->
+                    <div class="flex justify-center items-center space-x-4 mt-8 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-purple-custom rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
+                            <span class="ml-2 text-sm text-purple-light">Isi Form</span>
+                        </div>
+                        <div class="w-8 h-0.5 bg-purple-custom/30"></div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-gray-400 text-sm font-bold">2</div>
+                            <span class="ml-2 text-sm text-gray-400">Konfirmasi</span>
+                        </div>
+                        <div class="w-8 h-0.5 bg-purple-custom/30"></div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-gray-400 text-sm font-bold">3</div>
+                            <span class="ml-2 text-sm text-gray-400">Pengiriman</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="order-form" class="bg-gray-900/50 p-8 rounded-2xl border border-purple-custom/30 slide-in-left">
+                    <div class="mb-6">
+                        <label class="block text-purple-light font-semibold mb-2">Nama Lengkap *</label>
+                        <input type="text" id="customer-name" required class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-purple-light font-semibold mb-2">Nomor WhatsApp *</label>
+                        <input type="tel" id="customer-phone" required class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none" placeholder="08xxxxxxxxxx">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-purple-light font-semibold mb-2">Alamat Lengkap *</label>
+                        <textarea id="customer-address" required rows="3" class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none"></textarea>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-purple-light font-semibold mb-2">Jenis Case *</label>
+                        <select id="case-type" required class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none">
+                            <option value="">Pilih Jenis Case</option>
+                            <option value="Case Elegant Series - Rp 75.000">Case Elegant Series - Rp 75.000</option>
+                            <option value="Case Gaming Pro - Rp 95.000">Case Gaming Pro - Rp 95.000</option>
+                            <option value="Case Cute Collection - Rp 65.000">Case Cute Collection - Rp 65.000</option>
+                            <option value="Case Premium Luxury - Rp 125.000">Case Premium Luxury - Rp 125.000</option>
+                            <option value="Case Sport Active - Rp 85.000">Case Sport Active - Rp 85.000</option>
+                            <option value="Case Custom Design - Rp 100.000">Case Custom Design - Rp 100.000</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-purple-light font-semibold mb-2">Tipe HP *</label>
+                        <input type="text" id="phone-model" required class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none" placeholder="Contoh: iPhone 14 Pro, Samsung Galaxy S23">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-purple-light font-semibold mb-2">Jumlah *</label>
+                        <input type="number" id="quantity" required min="1" value="1" class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none">
+                    </div>
+
+                    <div class="mb-8">
+                        <label class="block text-purple-light font-semibold mb-2">Catatan Tambahan</label>
+                        <textarea id="order-notes" rows="3" class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none" placeholder="Warna, desain khusus, atau permintaan lainnya..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-purple-custom hover:bg-purple-dark py-4 rounded-lg text-white font-semibold text-lg transition-all transform hover:scale-105">
+                        Kirim Pesanan
+                    </button>
+                </form>
+
+                <div id="order-success" class="hidden bg-green-600/20 border border-green-500 p-6 rounded-lg mt-6 text-center">
+                    <h3 class="text-xl font-semibold text-green-400 mb-2">Pesanan Berhasil Dikirim!</h3>
+                    <p class="text-gray-300">Terima kasih! Data pesanan Anda telah tersimpan di sistem kami.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page-content hidden">
+        <section class="min-h-screen pt-24 pb-20 relative overflow-hidden">
+            <!-- Decorative Background -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute top-20 left-8 w-28 h-28 bg-purple-custom/10 rounded-full blur-xl animate-pulse"></div>
+                <div class="absolute bottom-20 right-8 w-36 h-36 bg-purple-light/10 rounded-full blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
+                <div class="absolute top-1/3 right-1/4 w-2 h-2 bg-purple-custom rounded-full animate-ping"></div>
+                <div class="absolute bottom-1/3 left-1/4 w-3 h-3 bg-purple-light rounded-full animate-bounce"></div>
+                
+                <!-- Communication Icons -->
+                <div class="absolute top-32 right-16 opacity-5 animate-bounce" style="animation-duration: 4s;">
+                    <svg class="w-12 h-12 text-purple-custom" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </div>
+                <div class="absolute bottom-40 left-20 opacity-5 animate-pulse">
+                    <svg class="w-10 h-10 text-purple-light" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16 fade-in">
+                    <!-- Contact Badge -->
+                    <div class="inline-flex items-center px-4 py-2 bg-purple-custom/20 border border-purple-custom/30 rounded-full mb-6">
+                        <span class="text-purple-light text-sm font-medium">💬 Get In Touch</span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-purple-custom">Hubungi Kami</h1>
+                    <p class="text-xl text-gray-300 mb-4">Kami siap membantu Anda dengan pertanyaan atau kebutuhan case HP</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Tim customer service kami siap melayani Anda 24/7. Jangan ragu untuk bertanya tentang produk atau layanan kami! 🤝</p>
+                    
+                    <!-- Quick Contact Options -->
+                    <div class="flex justify-center space-x-6 mt-8">
+                        <a href="https://wa.me/6285796248094" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 bg-green-600/20 border border-green-500/30 rounded-full text-green-400 hover:bg-green-600/30 transition-colors">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            WhatsApp
+                        </a>
+                        <a href="mailto:kaylacase@gmail.com" class="flex items-center px-4 py-2 bg-blue-600/20 border border-blue-500/30 rounded-full text-blue-400 hover:bg-blue-600/30 transition-colors">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            Email
+                        </a>
+                        <a href="https://instagram.com/kaylacase" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 bg-pink-600/20 border border-pink-500/30 rounded-full text-pink-400 hover:bg-pink-600/30 transition-colors">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="slide-in-left">
+                        <h2 class="text-2xl font-bold mb-6 text-purple-light">Kirim Pesan</h2>
+                        <form id="contact-form" class="bg-gray-900/50 p-8 rounded-2xl border border-purple-custom/30">
+                            <div class="mb-6">
+                                <label class="block text-purple-light font-semibold mb-2">Nama *</label>
+                                <input type="text" id="contact-name" required class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none">
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-purple-light font-semibold mb-2">Email *</label>
+                                <input type="email" id="contact-email" required class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none">
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-purple-light font-semibold mb-2">Subjek *</label>
+                                <input type="text" id="contact-subject" required class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none">
+                            </div>
+
+                            <div class="mb-8">
+                                <label class="block text-purple-light font-semibold mb-2">Pesan *</label>
+                                <textarea id="contact-message" required rows="5" class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white focus:border-purple-custom focus:outline-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-purple-custom hover:bg-purple-dark py-3 rounded-lg text-white font-semibold transition-all transform hover:scale-105">
+                                Kirim Pesan
+                            </button>
+                        </form>
+
+                        <div id="contact-success" class="hidden bg-green-600/20 border border-green-500 p-6 rounded-lg mt-6 text-center">
+                            <h3 class="text-xl font-semibold text-green-400 mb-2">Pesan Berhasil Dikirim!</h3>
+                            <p class="text-gray-300">Terima kasih! Pesan Anda telah tersimpan di sistem kami.</p>
+                        </div>
+                    </div>
+
+                    <!-- Owner Info -->
+                    <div class="slide-in-right">
+                        <h2 class="text-2xl font-bold mb-6 text-purple-light">Informasi Owner</h2>
+                        <div class="bg-gray-900/50 p-8 rounded-2xl border border-purple-custom/30">
+                            <!-- Owner Photo Frame -->
+                            <div class="photo-frame w-48 h-48 mx-auto mb-6">
+                                <div class="bg-gray-800 w-full h-full rounded-2xl flex items-center justify-center border-2 border-dashed border-purple-custom/50">
+                                    <img src="kela.jpg" alt="Foto Kayla" class="w-full h-full object-cover rounded-2xl">
+                                </div>
+                            </div>
+
+                            <div class="text-center mb-8">
+                                <h3 class="text-2xl font-bold text-purple-custom mb-2">Kayla</h3>
+                                <p class="text-purple-light font-semibold">Founder & Owner</p>
+                                <p class="text-gray-400 mt-4">
+                                    Passionate tentang teknologi dan fashion, saya mendirikan Kayla Case untuk memberikan perlindungan terbaik bagi HP Anda dengan desain yang stylish dan berkualitas premium.
+                                </p>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-purple-custom mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">kaylacase@gmail.com</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-purple-custom mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">+62 857-9624-8094</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-purple-custom mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Makassar, Indonesia</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Membership Page -->
+    <div id="membership-page" class="page-content">
+        <section class="min-h-screen pt-32 pb-20">
+            <div class="container mx-auto px-6">
+                <!-- Page Header -->
+                <div class="text-center mb-16 fade-in">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-custom via-purple-light to-purple-custom bg-clip-text text-transparent">
+                        Member Eksklusif
+                    </h1>
+                    <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                        Bergabunglah dengan komunitas kami dan dapatkan akses eksklusif ke penawaran spesial, diskon, dan produk terbaru!
+                    </p>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="flex justify-center gap-4 mb-12">
+                    <button onclick="switchAuthTab('signin')" id="signin-tab" class="px-8 py-3 bg-purple-custom text-white rounded-full font-semibold transition-all hover:bg-purple-dark">
+                        Sign In
+                    </button>
+                    <button onclick="switchAuthTab('signup')" id="signup-tab" class="px-8 py-3 border-2 border-purple-custom text-white rounded-full font-semibold transition-all hover:bg-purple-custom/10">
+                        Sign Up
+                    </button>
+                </div>
+
+                <!-- Auth Container -->
+                <div class="max-w-md mx-auto slide-in-left">
+                    <!-- Sign In Form -->
+                    <div id="signin-form" class="bg-gray-900/50 border-2 border-purple-custom/30 rounded-2xl p-8 backdrop-blur-sm">
+                        <h2 class="text-2xl font-bold text-purple-custom mb-6">Masuk ke Akun Anda</h2>
+                        
+                        <form id="membership-signin" onsubmit="handleSignIn(event)">
+                            <div class="mb-6">
+                                <label for="signin-email" class="block text-gray-300 font-semibold mb-2">Email</label>
+                                <input 
+                                    type="email" 
+                                    id="signin-email" 
+                                    name="email" 
+                                    placeholder="your@email.com"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-custom transition-colors"
+                                >
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="signin-password" class="block text-gray-300 font-semibold mb-2">Password</label>
+                                <input 
+                                    type="password" 
+                                    id="signin-password" 
+                                    name="password" 
+                                    placeholder="Masukkan password Anda"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-custom transition-colors"
+                                >
+                            </div>
+
+                            <div class="flex items-center justify-between mb-8">
+                                <label class="flex items-center text-gray-400">
+                                    <input type="checkbox" class="w-4 h-4 mr-2 accent-purple-custom">
+                                    Remember me
+                                </label>
+                                <a href="#" class="text-purple-light hover:text-purple-custom transition-colors">Forgot password?</a>
+                            </div>
+
+                            <button 
+                                type="submit" 
+                                class="w-full bg-purple-custom hover:bg-purple-dark py-3 rounded-lg text-white font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-purple-custom/25"
+                            >
+                                Sign In
+                            </button>
+                        </form>
+
+                        <div id="signin-success" class="hidden mt-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300">
+                            ✓ Berhasil masuk! Redirecting...
+                        </div>
+
+                        <div id="signin-error" class="hidden mt-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300"></div>
+                    </div>
+
+                    <!-- Sign Up Form -->
+                    <div id="signup-form" class="hidden bg-gray-900/50 border-2 border-purple-custom/30 rounded-2xl p-8 backdrop-blur-sm">
+                        <h2 class="text-2xl font-bold text-purple-custom mb-6">Buat Akun Baru</h2>
+                        
+                        <form id="membership-signup" onsubmit="handleSignUp(event)">
+                            <div class="mb-6">
+                                <label for="signup-fullname" class="block text-gray-300 font-semibold mb-2">Nama Lengkap</label>
+                                <input 
+                                    type="text" 
+                                    id="signup-fullname" 
+                                    name="fullname" 
+                                    placeholder="Nama lengkap Anda"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-custom transition-colors"
+                                >
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="signup-email" class="block text-gray-300 font-semibold mb-2">Email</label>
+                                <input 
+                                    type="email" 
+                                    id="signup-email" 
+                                    name="email" 
+                                    placeholder="your@email.com"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-custom transition-colors"
+                                >
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="signup-phone" class="block text-gray-300 font-semibold mb-2">No. Telepon</label>
+                                <input 
+                                    type="tel" 
+                                    id="signup-phone" 
+                                    name="phone" 
+                                    placeholder="+62 8xx xxxx xxxx"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-custom transition-colors"
+                                >
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="signup-password" class="block text-gray-300 font-semibold mb-2">Password</label>
+                                <input 
+                                    type="password" 
+                                    id="signup-password" 
+                                    name="password" 
+                                    placeholder="Min. 6 karakter"
+                                    required
+                                    minlength="6"
+                                    class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-custom transition-colors"
+                                >
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="signup-confirm-password" class="block text-gray-300 font-semibold mb-2">Konfirmasi Password</label>
+                                <input 
+                                    type="password" 
+                                    id="signup-confirm-password" 
+                                    name="confirm_password" 
+                                    placeholder="Konfirmasi password Anda"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-800 border border-purple-custom/50 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-custom transition-colors"
+                                >
+                            </div>
+
+                            <label class="flex items-start text-gray-400 mb-8">
+                                <input type="checkbox" class="w-4 h-4 mt-1 mr-3 accent-purple-custom" required>
+                                <span>Saya setuju dengan <a href="#" class="text-purple-light hover:text-purple-custom">Syarat & Ketentuan</a> dan <a href="#" class="text-purple-light hover:text-purple-custom">Kebijakan Privasi</a></span>
+                            </label>
+
+                            <button 
+                                type="submit" 
+                                class="w-full bg-purple-custom hover:bg-purple-dark py-3 rounded-lg text-white font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-purple-custom/25"
+                            >
+                                Buat Akun
+                            </button>
+                        </form>
+
+                        <div id="signup-success" class="hidden mt-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300">
+                            ✓ Akun berhasil dibuat! Redirecting...
+                        </div>
+
+                        <div id="signup-error" class="hidden mt-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300"></div>
+                    </div>
+                </div>
+
+                <!-- Benefits Section -->
+                <div class="grid md:grid-cols-3 gap-8 mt-20">
+                    <div class="case-frame text-center bounce-in">
+                        <div class="text-4xl mb-4">🎁</div>
+                        <h3 class="text-xl font-bold text-purple-light mb-3">Diskon Eksklusif</h3>
+                        <p class="text-gray-400">Dapatkan diskon hingga 30% untuk member setia kami</p>
+                    </div>
+                    <div class="case-frame text-center bounce-in" style="animation-delay: 0.2s;">
+                        <div class="text-4xl mb-4">⭐</div>
+                        <h3 class="text-xl font-bold text-purple-light mb-3">Program Loyalitas</h3>
+                        <p class="text-gray-400">Kumpulkan poin dan tukarkan dengan reward menarik</p>
+                    </div>
+                    <div class="case-frame text-center bounce-in" style="animation-delay: 0.4s;">
+                        <div class="text-4xl mb-4">📦</div>
+                        <h3 class="text-xl font-bold text-purple-light mb-3">Pengiriman Gratis</h3>
+                        <p class="text-gray-400">Gratis ongkos kirim untuk pembelian dari member</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-purple-custom/30 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-purple-custom mb-4">Kayla Case</h3>
+                    <p class="text-gray-400 mb-4">Case HP premium dengan desain eksklusif dan kualitas terbaik untuk melindungi smartphone Anda.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://wa.me/6285796248094" target="_blank" rel="noopener noreferrer" class="bg-green-600 hover:bg-green-700 p-3 rounded-full transition-colors">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/kaylacase" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-3 rounded-full transition-colors">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-purple-light mb-4">Produk</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" onclick="showPage('products')" class="hover:text-purple-light transition-colors">Case Elegant</a></li>
+                        <li><a href="#" onclick="showPage('products')" class="hover:text-purple-light transition-colors">Case Gaming</a></li>
+                        <li><a href="#" onclick="showPage('products')" class="hover:text-purple-light transition-colors">Case Cute</a></li>
+                        <li><a href="#" onclick="showPage('products')" class="hover:text-purple-light transition-colors">Case Premium</a></li>
+                        <li><a href="#" onclick="showPage('products')" class="hover:text-purple-light transition-colors">Case Custom</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-purple-light mb-4">Layanan</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" onclick="showPage('order')" class="hover:text-purple-light transition-colors">Pemesanan Online</a></li>
+                        <li><a href="#" onclick="showPage('contact')" class="hover:text-purple-light transition-colors">Konsultasi Gratis</a></li>
+                        <li><a href="#" class="hover:text-purple-light transition-colors">Garansi Produk</a></li>
+                        <li><a href="#" class="hover:text-purple-light transition-colors">Pengiriman Cepat</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-purple-light mb-4">Informasi</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" onclick="showPage('contact')" class="hover:text-purple-light transition-colors">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-purple-light transition-colors">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="hover:text-purple-light transition-colors">Syarat & Ketentuan</a></li>
+                        <li><a href="#" onclick="showPage('contact')" class="hover:text-purple-light transition-colors">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-purple-custom/30 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Kayla Case. All rights reserved. Made with ❤️ for smartphone protection.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========================================
+        // GOOGLE SHEETS CONFIGURATION
+        // ========================================
+        // PASTE YOUR GOOGLE APPS SCRIPT DEPLOYMENT URLs HERE:
+        const GOOGLE_SHEETS_CONFIG = {
+            ORDER_SHEET_URL: 'https://script.google.com/macros/s/AKfycbxOggidKuAO4G2UoKqhl2UNSBUpUTiwrXcgIlpQ4d9SyrSkTi2IdaacvLMwyCD_C8s/exec',
+            CONTACT_SHEET_URL: 'https://script.google.com/macros/s/AKfycbxOggidKuAO4G2UoKqhl2UNSBUpUTiwrXcgIlpQ4d9SyrSkTi2IdaacvLMwyCD_C8s/exec'
+        };
+
+        // ========================================
+        // FONNTE WHATSAPP CONFIGURATION
+        // ========================================
+        // PASTE YOUR FONNTE API KEY HERE:
+        const FONNTE_CONFIG = {
+            API_KEY: 'gEkpn3kimAm6MYnga3yg',  // Replace with your Fonnte API key
+            OWNER_PHONE: '6285796248094',     // Replace with owner's WhatsApp number (without +)
+            ENDPOINT: 'https://api.fonnte.com/send'
+        };
+
+        // ========================================
+        // GOOGLE SHEETS SUBMIT FUNCTION
+        // ========================================
+        async function submitToGoogleSheets(url, data) {
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Note: no-cors mode doesn't allow reading response
+                // We assume success if no error is thrown
+                return { success: true };
+            } catch (error) {
+                console.error('Error submitting to Google Sheets:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // ========================================
+        // FONNTE WHATSAPP SEND FUNCTION
+        // ========================================
+        async function sendWhatsAppViaFonnte(phoneNumber, message) {
+            try {
+                const response = await fetch(FONNTE_CONFIG.ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': FONNTE_CONFIG.API_KEY,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        target: phoneNumber,
+                        message: message
+                    })
+                });
+
+                const result = await response.json();
+                console.log('WhatsApp sent successfully:', result);
+                return { success: true, data: result };
+            } catch (error) {
+                console.error('Error sending WhatsApp via Fonnte:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // ========================================
+        // FORMAT ORDER MESSAGE FOR WHATSAPP
+        // ========================================
+        function formatOrderMessage(formData) {
+            return `*Pesanan Baru dari Kayla Case* 📱
+
+Nama: ${formData.name}
+No. WhatsApp: ${formData.phone}
+Alamat: ${formData.address}
+
+*Detail Pesanan:*
+Jenis Case: ${formData.caseType}
+Tipe HP: ${formData.phoneModel}
+Jumlah: ${formData.quantity}
+
+Catatan: ${formData.notes || '-'}
+
+Waktu Pesanan: ${formData.timestamp}`;
+        }
+
+        // ========================================
+        // FORMAT CONTACT MESSAGE FOR WHATSAPP
+        // ========================================
+        function formatContactMessage(contactData) {
+            return `*Pesan Baru dari Kayla Case* 💬
+
+Nama: ${contactData.name}
+Email: ${contactData.email}
+Subjek: ${contactData.subject}
+
+*Pesan:*
+${contactData.message}
+
+Waktu: ${contactData.timestamp}`;
+        }
+
+        // ========================================
+        // PAGE NAVIGATION FUNCTIONS
+        // ========================================
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => page.classList.add('hidden'));
+            
+            // Show selected page
+            document.getElementById(pageId + '-page').classList.remove('hidden');
+            
+            // Update active nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('text-purple-custom'));
+            
+            // Close mobile menu
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Select Case Function
+        function selectCase(caseName, price) {
+            showPage('order');
+            document.getElementById('case-type').value = caseName + ' - Rp ' + price.toLocaleString('id-ID');
+        }
+
+        // ========================================
+        // ORDER FORM SUBMISSION WITH GOOGLE SHEETS
+        // ========================================
+        document.getElementById('order-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Mengirim...';
+            submitBtn.disabled = true;
+            
+            const formData = {
+                name: document.getElementById('customer-name').value,
+                phone: document.getElementById('customer-phone').value,
+                address: document.getElementById('customer-address').value,
+                caseType: document.getElementById('case-type').value,
+                phoneModel: document.getElementById('phone-model').value,
+                quantity: document.getElementById('quantity').value,
+                notes: document.getElementById('order-notes').value,
+                timestamp: new Date().toLocaleString('id-ID'),
+                type: 'order'
+            };
+
+            // Submit to Google Sheets
+            const result = await submitToGoogleSheets(GOOGLE_SHEETS_CONFIG.ORDER_SHEET_URL, formData);
+            
+            // Send WhatsApp notification to owner
+            const orderMessage = formatOrderMessage(formData);
+            await sendWhatsAppViaFonnte(FONNTE_CONFIG.OWNER_PHONE, orderMessage);
+            
+            // Optional: Send confirmation to customer
+            const confirmationMessage = `Halo ${formData.name}! 👋\n\nTerima kasih telah memesan di Kayla Case.\nPesanan Anda telah diterima dan akan segera kami proses.\n\nTim kami akan menghubungi Anda segera melalui WhatsApp.\n\nSalam,\nKayla Case 💜`;
+            await sendWhatsAppViaFonnte(formData.phone, confirmationMessage);
+            
+            // Reset button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            
+            // Show success message (assuming success since no-cors doesn't return response)
+            document.getElementById('order-success').classList.remove('hidden');
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('order-success').classList.add('hidden');
+            }, 5000);
+        });
+
+        // ========================================
+        // CONTACT FORM SUBMISSION WITH GOOGLE SHEETS
+        // ========================================
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Mengirim...';
+            submitBtn.disabled = true;
+            
+            const contactData = {
+                name: document.getElementById('contact-name').value,
+                email: document.getElementById('contact-email').value,
+                subject: document.getElementById('contact-subject').value,
+                message: document.getElementById('contact-message').value,
+                timestamp: new Date().toLocaleString('id-ID'),
+                type: 'contact'
+            };
+
+            // Submit to Google Sheets
+            const result = await submitToGoogleSheets(GOOGLE_SHEETS_CONFIG.CONTACT_SHEET_URL, contactData);
+            
+            // Send WhatsApp notification to owner
+            const contactMessage = formatContactMessage(contactData);
+            await sendWhatsAppViaFonnte(FONNTE_CONFIG.OWNER_PHONE, contactMessage);
+            
+            // Optional: Send confirmation to customer
+            const confirmationMessage = `Halo ${contactData.name}! 👋\n\nTerima kasih telah menghubungi Kayla Case.\nPesan Anda telah kami terima dan akan segera dibalas.\n\nTim kami menunggu untuk membantu Anda.\n\nSalam,\nKayla Case 💜`;
+            // Note: We can't send to email via WhatsApp, but you can integrate email sending separately
+            
+            // Reset button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            
+            // Show success message (assuming success since no-cors doesn't return response)
+            document.getElementById('contact-success').classList.remove('hidden');
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('contact-success').classList.add('hidden');
+            }, 5000);
+        });
+
+        // ========================================
+        // INITIALIZE PAGE
+        // ========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+        });
+    </script>
+    <script>
+                // ========================================
+        // CONFIG
+        // ========================================
+        const MEMBERSHIP_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxysoOlAGMN-LUxoeoxUlL_njFpQOiGGserz14eHFAJnQiUOFpAZDdkS7tbBngqEyt6/exec";
+
+
+        // ========================================
+        // GOOGLE SHEETS FUNCTIONS
+        // ========================================
+
+        // Submit data ke Google Sheets
+        async function submitToMembershipSheets(data, type) {
+            try {
+                const response = await fetch(MEMBERSHIP_SHEETS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        type: type,
+                        data: data,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+                return true;
+            } catch (error) {
+                console.error('Error submitting to Membership Sheets:', error);
+                return false;
+            }
+        }
+
+        // Get user by email
+        async function getUserFromGoogleSheets(email) {
+            try {
+                const response = await fetch(
+                    MEMBERSHIP_SHEETS_URL + '?action=getUser&email=' + encodeURIComponent(email),
+                    {
+                        method: 'GET',
+                        mode: 'cors'
+                    }
+                );
+
+                if (response.ok) {
+                    return await response.json();
+                }
+                return null;
+
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+                return null;
+            }
+        }
+
+        // Check if email exists
+        async function checkEmailExists(email) {
+            try {
+                const response = await fetch(
+                    MEMBERSHIP_SHEETS_URL + '?action=checkEmail&email=' + encodeURIComponent(email),
+                    {
+                        method: 'GET',
+                        mode: 'cors'
+                    }
+                );
+
+                if (response.ok) {
+                    const res = await response.json();
+                    return res.exists;
+                }
+                return false;
+
+            } catch (error) {
+                console.error("Error checking email:", error);
+                return false;
+            }
+        }
+
+
+        // ========================================
+        // PASSWORD HASHING (SIMPLE DEMO)
+        // ========================================
+        function hashPassword(password) {
+            let hash = 0;
+            for (let i = 0; i < password.length; i++) {
+                const char = password.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash |= 0; 
+            }
+            return Math.abs(hash).toString(16);
+        }
+
+        function verifyPassword(inputPassword, storedHash) {
+            return hashPassword(inputPassword) === storedHash;
+        }
+
+
+        // ========================================
+        // TAB SWITCHING
+        // ========================================
+        function switchAuthTab(tab) {
+            const signinForm = document.getElementById('signin-form');
+            const signupForm = document.getElementById('signup-form');
+
+            const signinTab = document.getElementById('signin-tab');
+            const signupTab = document.getElementById('signup-tab');
+
+            if (tab === "signin") {
+                signinForm.classList.remove("hidden");
+                signupForm.classList.add("hidden");
+
+                signinTab.classList.add("bg-purple-custom");
+                signupTab.classList.remove("bg-purple-custom");
+            } else {
+                signupForm.classList.remove("hidden");
+                signinForm.classList.add("hidden");
+
+                signupTab.classList.add("bg-purple-custom");
+                signinTab.classList.remove("bg-purple-custom");
+            }
+        }
+
+
+        // ========================================
+        // SIGN UP
+        // ========================================
+        async function handleSignUp(event) {
+            event.preventDefault();
+
+            const fullname = document.getElementById("signup-fullname").value.trim();
+            const email = document.getElementById("signup-email").value.trim();
+            const phone = document.getElementById("signup-phone").value.trim();
+            const password = document.getElementById("signup-password").value.trim();
+            const confirmPassword = document.getElementById("signup-confirm-password").value.trim();
+
+            const errorBox = document.getElementById("signup-error");
+            const successBox = document.getElementById("signup-success");
+
+            errorBox.classList.add("hidden");
+            successBox.classList.add("hidden");
+
+            // VALIDATION
+            if (password !== confirmPassword) {
+                errorBox.textContent = "Password tidak sama!";
+                errorBox.classList.remove("hidden");
+                return;
+            }
+
+            // CEK EMAIL SUDAH ADA
+            const exist = await checkEmailExists(email);
+            if (exist) {
+                errorBox.textContent = "Email sudah terdaftar!";
+                errorBox.classList.remove("hidden");
+                return;
+            }
+
+            // HASH PASSWORD
+            const hashedPassword = hashPassword(password);
+
+            const newUser = {
+                fullname: fullname,
+                email: email,
+                phone: phone,
+                password: hashedPassword
+            };
+
+            const result = await submitToMembershipSheets(newUser, "signup");
+
+            if (result) {
+                successBox.classList.remove("hidden");
+                setTimeout(() => {
+                    switchAuthTab("signin");
+                }, 1500);
+            } else {
+                errorBox.textContent = "Terjadi kesalahan. Coba lagi!";
+                errorBox.classList.remove("hidden");
+            }
+        }
+
+
+        // ========================================
+        // SIGN IN
+        // ========================================
+        async function handleSignIn(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("signin-email").value.trim();
+            const password = document.getElementById("signin-password").value.trim();
+
+            const errorBox = document.getElementById("signin-error");
+            const successBox = document.getElementById("signin-success");
+
+            errorBox.classList.add("hidden");
+            successBox.classList.add("hidden");
+
+            const user = await getUserFromGoogleSheets(email);
+
+            if (!user) {
+                errorBox.textContent = "Email tidak ditemukan!";
+                errorBox.classList.remove("hidden");
+                return;
+            }
+
+            const valid = verifyPassword(password, user.password);
+
+            if (!valid) {
+                errorBox.textContent = "Password salah!";
+                errorBox.classList.remove("hidden");
+                return;
+            }
+
+            successBox.classList.remove("hidden");
+
+            setTimeout(() => {
+                window.location.href = "/"; // redirect bebas
+            }, 1200);
+        }
+
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a6bf4693f36034',t:'MTc1OTc3MDM2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
